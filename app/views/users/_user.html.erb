@@ -5,6 +5,11 @@
 	  </div>
 	  <div class="media-body">
 	    <h4 class="media-heading"><%= user.email %></h4>
+	    <div class="pull-right follow-form">
+	    <% if user_signed_in? %>
+	    	<%= render('follow_form', user: user) %>
+	    <% end %>
+		</div>
 	  </div>
 	</div>
 </li>
