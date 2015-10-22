@@ -2,8 +2,8 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= gravatar_for @user %>
-        <%= @user.email %>
+        <%= link_to (gravatar_for(@user)), @user %>
+        <%= @user.name %>
       </h1>
     </section>
   </aside>
