@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022143352) do
+ActiveRecord::Schema.define(version: 20151102021733) do
 
   create_table "followships", force: :cascade do |t|
     t.integer  "follower_id", limit: 4
@@ -24,13 +24,33 @@ ActiveRecord::Schema.define(version: 20151022143352) do
   add_index "followships", ["follower_id", "followed_id"], name: "index_followships_on_follower_id_and_followed_id", unique: true, using: :btree
   add_index "followships", ["follower_id"], name: "index_followships_on_follower_id", using: :btree
 
-  create_table "movies", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.string   "poster",     limit: 255
-    t.integer  "rating",     limit: 4
-    t.string   "overview",   limit: 255
+  create_table "genres", force: :cascade do |t|
+    t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  add_index "genres", ["name"], name: "index_genres_on_name", unique: true, using: :btree
+
+  create_table "movie_genres", force: :cascade do |t|
+    t.integer  "movie_id",   limit: 4
+    t.integer  "genre_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "movie_genres", ["genre_id"], name: "index_movie_genres_on_genre_id", using: :btree
+  add_index "movie_genres", ["movie_id", "genre_id"], name: "index_movie_genres_on_movie_id_and_genre_id", unique: true, using: :btree
+  add_index "movie_genres", ["movie_id"], name: "index_movie_genres_on_movie_id", using: :btree
+
+  create_table "movies", force: :cascade do |t|
+    t.string   "title",        limit: 255
+    t.string   "poster",       limit: 255
+    t.decimal  "rating",                     precision: 10
+    t.text     "overview",     limit: 65535
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.string   "release_date", limit: 255
   end
 
   create_table "users", force: :cascade do |t|

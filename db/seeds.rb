@@ -5,23 +5,21 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
-             password:              "foobar123")
+require 'Set'
 
-99.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  User.create!(name:  name,
-               email: email,
-               password: password)
+res = []
+file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
+	data = JSON.parse(line)
+	res.push(data)
 end
 
 
-users = User.all
-user  = users.first
-following = users[2..50]
-followers = users[3..40]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
+
+res.each do |data|
+	genres = data["genres"]
+	genres.each do |gr_name|
+		gr = Genre.find_by(name: gr_name)
+		mv = Movie.find_by(title: data["title"])
+		MovieGenre.create!(movie_id: mv.id, genre_id: gr.id)
+	end
+end

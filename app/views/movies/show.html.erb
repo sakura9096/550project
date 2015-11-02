@@ -1,24 +1,13 @@
-<p id="notice"><%= notice %></p>
+	<div class="row">
+		<div class="col-md-2 col-md-offset-2">
+			<%= image_tag(@movie.poster, size: "200") %>
+		</div>
+		<div class="col-md-6 middle">
+			<p class="title"><%= @movie.title %></p> 
+			<span><%= @movie.release_date %> </span>
+			<p>rating: <%= @movie.rating %></p>
+			<h5>Overview: </h5>
+			<span><%= @movie.overview %></span>
+		</div>
+	</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
-</p>
-
-<p>
-  <strong>Poster:</strong>
-  <%= @movie.poster %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <%= @movie.rating %>
-</p>
-
-<p>
-  <strong>Overview:</strong>
-  <%= @movie.overview %>
-</p>
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
