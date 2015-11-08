@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102185731) do
+ActiveRecord::Schema.define(version: 20151108210730) do
 
   create_table "followships", force: :cascade do |t|
     t.integer  "follower_id", limit: 4
@@ -55,6 +55,18 @@ ActiveRecord::Schema.define(version: 20151102185731) do
   end
 
   add_index "movies", ["tmdb_id"], name: "index_movies_on_tmdb_id", unique: true, using: :btree
+
+  create_table "people", force: :cascade do |t|
+    t.string   "profile",      limit: 255
+    t.string   "name",         limit: 255
+    t.integer  "personId",     limit: 4
+    t.string   "day_of_birth", limit: 255
+    t.text     "biography",    limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "people", ["personId"], name: "index_people_on_personId", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
