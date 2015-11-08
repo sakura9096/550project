@@ -15,35 +15,35 @@ end
 
 require 'Set'
 
-res = []
-file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
-	data = JSON.parse(line)
-	res.push(data)
-end
+# res = []
+# file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
+# 	data = JSON.parse(line)
+# 	res.push(data)
+# end
 
-genre = Set.new
+# genre = Set.new
 
-res.each! do |data|
-	genre = genre.merge(data["genres"])
-end
+# res.each! do |data|
+# 	genre = genre.merge(data["genres"])
+# end
 
-res = []
-file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
-	data = JSON.parse(line)
-	res.push(data)
-end
+# res = []
+# file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
+# 	data = JSON.parse(line)
+# 	res.push(data)
+# end
 
-res.each! do |data|
-	Movie.create!(title: data["title"], 
-				overview: data["overview"], 
-				poster: data["poster"],
-				tmdb_id: data["id"], 
-				rating: data["userrating"])
-end
+# res.each! do |data|
+# 	Movie.create!(title: data["title"], 
+# 				overview: data["overview"], 
+# 				poster: data["poster"],
+# 				tmdb_id: data["id"], 
+# 				rating: data["userrating"])
+# end
 
-genre.each do |g|
-	Genre.create!(name: g)
-end	
+# genre.each do |g|
+# 	Genre.create!(name: g)
+# end	
 
 res = []
 file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
