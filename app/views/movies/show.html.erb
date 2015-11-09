@@ -18,11 +18,10 @@
 			      </thead>
 
 			      <tbody>
-			        <% @crews.each_with_index do |crew, i| %>
+			        <% @crews.each do |crew| %>
 			          <tr>
 			            <td><%= crew.job %></td>
-			            <% person = Person.find_by(personId: crew.personid) %>
-			            <td><%= link_to person.name, person  %></td>
+			            <td><%= link_to crew.person.name, crew.person  %></td>
 			          </tr>
 			        <% end %>
 			      </tbody>
@@ -37,11 +36,10 @@
 			      </thead>
 
 			      <tbody>
-			        <% @casts.each_with_index do |cast, i| %>
+			        <% @casts.each do |cast| %>
 			          <tr>
-			            <% person = Person.find_by(personId: cast.personid) %>
-			            <td><%= image_tag(person.profile, size: "50") %></td>
-			            <td><%= link_to person.name, person  %></td>
+			            <td><%= image_tag(cast.person.profile, size: "50") %></td>
+			            <td><%= link_to cast.person.name, cast.person  %></td>
 			            <td><%= cast.character %></td>
 			          </tr>
 			        <% end %>

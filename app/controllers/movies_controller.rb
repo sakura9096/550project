@@ -11,12 +11,12 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     tmdb_id = @movie.tmdb_id
-    @crews = Crew.select("*").from("movies, crews").where("movies.tmdb_id = crews.movieid and movies.tmdb_id = ?", tmdb_id).to_a
-    @persons = []
+    @crews = @movie.crew_relations.includes(:person).to_a
+    #@workers = @movie.crews
     @crews.sort_by! {|crew| crew.job} 
-    @casts = Cast.select("*").from("movies, casts").where("movies.tmdb_id = casts.movieid and movies.tmdb_id = ?", tmdb_id).to_a
-    @casts.reject! {|cast| cast.character.length == 0}
+    @casts = @movie.cast_relations.includes(:person).to_a
     @casts.sort_by! {|cast| cast.order}
+    #@actors = @movie.casts
   end
 
   # GET /movies/new
