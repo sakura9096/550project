@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108210730) do
+ActiveRecord::Schema.define(version: 20151109010742) do
+
+  create_table "casts", force: :cascade do |t|
+    t.integer  "movieid",    limit: 4
+    t.integer  "personid",   limit: 4
+    t.text     "character",  limit: 65535
+    t.integer  "order",      limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "casts", ["movieid"], name: "index_casts_on_movieid", using: :btree
+  add_index "casts", ["personid"], name: "index_casts_on_personid", using: :btree
+
+  create_table "crews", force: :cascade do |t|
+    t.integer  "movieid",    limit: 4
+    t.integer  "personid",   limit: 4
+    t.string   "job",        limit: 255
+    t.string   "department", limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "crews", ["movieid", "personid", "job", "department"], name: "index_crews_on_movieid_and_personid_and_job_and_department", unique: true, using: :btree
+  add_index "crews", ["movieid"], name: "index_crews_on_movieid", using: :btree
+  add_index "crews", ["personid"], name: "index_crews_on_personid", using: :btree
 
   create_table "followships", force: :cascade do |t|
     t.integer  "follower_id", limit: 4

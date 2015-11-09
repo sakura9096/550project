@@ -63,18 +63,48 @@ require 'Set'
 
 
 res = []
-file = File.readlines("#{Rails.root}/public/TMDBPersonInfo.json").each do |line|
+file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
 	data = JSON.parse(line)
 	res.push(data)
 end
 
-persons = []
+# persons = []
+# res.each do |data|
+# 	persons << Person.new(profile: data["profile"],
+# 				  name: data["name"],
+# 				  biography: data["biography"],
+# 				  day_of_birth: data["dayofbirth"],
+# 				  personId: data["personId"]
+# 				  )
+# end
+# Person.import persons
+# crews = []
+# res.each do |data|
+# 	crew = data["crew"]
+# 	tmdb_id = data["id"]
+# 	if crew.size > 0
+# 		crew.each do |person|
+# 			personId = person["personId"]
+# 			department = person["department"]
+# 			job = person["job"]
+# 			crews << Crew.new(personid: personId, movieid: tmdb_id, job: job, department: department)
+# 		end
+# 	end
+# end
+# Crew.import crews
+
+
+casts = []
 res.each do |data|
-	persons << Person.new(profile: data["profile"],
-				  name: data["name"],
-				  biography: data["biography"],
-				  day_of_birth: data["dayofbirth"],
-				  personId: data["personId"]
-				  )
+	cast = data["cast"]
+	tmdb_id = data["id"]
+	if cast.length > 0
+		cast.each do |person|
+			personId = person["personId"]
+			character = person["character"]
+			order = person["order"]
+			casts << Cast.new(personid: personId, movieid: tmdb_id, order: order, character:character)
+		end
+	end
 end
-Person.import persons
+Cast.import casts

@@ -8,6 +8,46 @@
 			<p>rating: <%= @movie.rating %></p>
 			<h5>Overview: </h5>
 			<span><%= @movie.overview %></span>
+			<div>
+			    <table class="table table-hover">
+			      <thead>
+			        <tr>
+			          <th>Job</th>
+			          <th>Name</th>
+			        </tr>
+			      </thead>
+
+			      <tbody>
+			        <% @crews.each_with_index do |crew, i| %>
+			          <tr>
+			            <td><%= crew.job %></td>
+			            <% person = Person.find_by(personId: crew.personid) %>
+			            <td><%= link_to person.name, person  %></td>
+			          </tr>
+			        <% end %>
+			      </tbody>
+			    </table>
+			    <table class="table table-hover">
+			      <thead>
+			        <tr>
+			          <th></th>
+			          <th>Name</th>
+			          <th>Character</th>
+			        </tr>
+			      </thead>
+
+			      <tbody>
+			        <% @casts.each_with_index do |cast, i| %>
+			          <tr>
+			            <% person = Person.find_by(personId: cast.personid) %>
+			            <td><%= image_tag(person.profile, size: "50") %></td>
+			            <td><%= link_to person.name, person  %></td>
+			            <td><%= cast.character %></td>
+			          </tr>
+			        <% end %>
+			      </tbody>
+			    </table>			
+			</div>
 		</div>
 	</div>
 
