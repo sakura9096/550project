@@ -1,0 +1,15 @@
+<% if person.biography.size > 0 %>
+  <b>Bio</b>: 
+  <% if person.biography.size < 577  %>
+    <div class="bio-content"><%= person.biography[0...577]  %></div>
+  <% else %>
+    <% second_half = person.biography[577...person.biography.size] %>
+    <% space_pos = second_half.index ' ' %>
+    <% if space_pos == nil %>
+      <% space_pos = person.biography.size %>
+    <% else %>
+      <% space_pos += 577 %>
+    <% end %>
+    <div class="bio-content"><%= person.biography[0...space_pos] %></div>
+  <% end %>
+<% end %>
