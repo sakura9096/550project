@@ -15,6 +15,7 @@ class MoviesController < ApplicationController
     #@workers = @movie.crews
     @crews.sort_by! {|crew| crew.job} 
     @casts = @movie.cast_relations.includes(:person).to_a
+    @casts.reject! {|cast| cast.character.size == 0}
     @casts.sort_by! {|cast| cast.order}
     #@actors = @movie.casts
   end

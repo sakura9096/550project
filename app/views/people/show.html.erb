@@ -1,29 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-2 col-md-offset-2">
+    <%= render 'profile', person: @person %>
+  </div>
+  <div class="col-md-4 col-md-offset-1">
+     <p class="actor-name"><%= @person.name %></p>
+     <div class="actor-dob">
+       <%= render 'dob', person: @person %>
+     </div>
+     <p class="actor-bio">
+      <%= render 'bio', person: @person %>
+     </p>
+  </div>
+</div>
 
-<p>
-  <strong>Profile:</strong>
-  <%= @person.profile %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @person.name %>
-</p>
-
-<p>
-  <strong>Personid:</strong>
-  <%= @person.personId %>
-</p>
-
-<p>
-  <strong>Day of birth:</strong>
-  <%= @person.day_of_birth %>
-</p>
-
-<p>
-  <strong>Biography:</strong>
-  <%= @person.biography %>
-</p>
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<div class="row">
+  <div class="col-md-7 col-md-offset-2">
+    <div class="panel panel-default" style="margin-top:15px;">
+      <div class="panel-heading center">Actor' Movies</div>
+      <div class="panel-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @acting_movies.each do |movie| %>
+            <tr>
+              <% if movie.poster.blank? %>
+                <td><%= image_tag("chiwawa.jpeg", size:"50") %></td>
+              <% else %>
+                <td><%= image_tag(movie.poster, size: "50") %></td>
+              <% end %>
+              <td><%= link_to movie.title, movie %></td>
+              <td><%= movie.rating %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
