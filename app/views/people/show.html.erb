@@ -1,6 +1,8 @@
 <div class="row">
   <div class="col-md-2 col-md-offset-2">
-    <%= render 'profile', person: @person %>
+    <div class="actor-profile">
+      <%= render 'profile', person: @person %>
+    </div>
   </div>
   <div class="col-md-4 col-md-offset-1">
      <p class="actor-name"><%= @person.name %></p>
@@ -15,32 +17,63 @@
 
 <div class="row">
   <div class="col-md-7 col-md-offset-2">
-    <div class="panel panel-default" style="margin-top:15px;">
-      <div class="panel-heading center">Actor' Movies</div>
-      <div class="panel-body">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Title</th>
-            <th>Rating</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @acting_movies.each do |movie| %>
-            <tr>
-              <% if movie.poster.blank? %>
-                <td><%= image_tag("chiwawa.jpeg", size:"50") %></td>
-              <% else %>
-                <td><%= image_tag(movie.poster, size: "50") %></td>
+    <% if @acting_movies.any? %>
+      <div class="panel panel-default" style="margin-top:15px;">
+        <div class="panel-heading center">Cast Member</div>
+        <div class="panel-body">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @acting_movies.each do |movie| %>
+                <tr>
+                  <% if movie.poster.blank? %>
+                    <td><%= image_tag("chiwawa.jpeg", size:"50") %></td>
+                  <% else %>
+                    <td><%= image_tag(movie.poster, size: "50") %></td>
+                  <% end %>
+                  <td><%= link_to movie.title, movie %></td>
+                  <td><%= movie.rating %></td>
+                </tr>
               <% end %>
-              <td><%= link_to movie.title, movie %></td>
-              <td><%= movie.rating %></td>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% end %>
+    <% if @working_movies.any? %>
+    <div class="panel panel-default" style="margin-top:15px;">
+      <div class="panel-heading center">Crew Member</div>
+      <div class="panel-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Title</th>
+              <th>Rating</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @working_movies.each do |movie| %>
+              <tr>
+                <% if movie.poster.blank? %>
+                  <td><%= image_tag("chiwawa.jpeg", size:"50") %></td>
+                <% else %>
+                  <td><%= image_tag(movie.poster, size: "50") %></td>
+                <% end %>
+                <td><%= link_to movie.title, movie %></td>
+                <td><%= movie.rating %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
+    <% end %>
   </div>
 </div>

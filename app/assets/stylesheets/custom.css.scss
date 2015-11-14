@@ -9,7 +9,9 @@ $jumbotron-bg:                     white;
 
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
-
+body { 
+  padding-top: 70px; 
+}
 .center {
      text-align: center;
 }
@@ -141,7 +143,7 @@ aside {
 }
 
 .actor-dob {
-  border-top: 1px solid $gray-lighter; 
+  border-top: 1px solid white; 
   margin-top: 10px;
   padding-top: 5px;
   margin-bottom: 10px;
@@ -163,3 +165,12 @@ aside {
     border-bottom: 1px solid $gray-lighter;
   }
 } 
+
+.actor-profile {
+    border-right: 1px solid red; 
+
+}
+
+.rating {
+  background-color: #f1c40f;
+}

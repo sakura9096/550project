@@ -1,61 +1,40 @@
-	<div class="row">
-		<div class="col-md-2 col-md-offset-2">
-			<%= image_tag(@movie.poster, size: "200") %>
+<div class="row">
+	<div class="col-md-2" style="margin-top:0px; position:fixed;">
+		<h3 class="center" style="margin-top:0px;">Best in This Genre:</h3>
+	    <table class="table table-hover">
+	      <thead>
+	        <tr>
+	          <th></th>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <% @related_movies.each do |movie| %>
+	          <tr>
+	            <td class="center"> <%= link_to(image_tag(movie.poster, size:"80"), movie)  %></td>
+	          </tr>
+	        <% end %>
+	      </tbody>
+	    </table>
+	</div>
+	<div class="col-md-2 col-md-offset-2">
+		<%= image_tag(@movie.poster, size: "200") %>
+	</div>
+	<div class="col-md-5 middle">
+		<p class="title"><%= @movie.title %></p> 
+		<span><%= @movie.release_date %> </span>
+		<% @movie.genres.each do |gr| %>
+		  <span><%= link_to(gr.name.concat(" | "), gr  )%></span>
+		<% end %>
+		<p style="margin-top:10px">
+			<span class="rating">TMDB Rating: <%= @movie.rating %></span>
+		</p>
+		<h5>Overview: </h5>
+		<span><%= @movie.overview %></span>
+		<div>
+			<%= render 'movie_crew', crews: @crews %>			    
 		</div>
-		<div class="col-md-6 middle">
-			<p class="title"><%= @movie.title %></p> 
-			<span><%= @movie.release_date %> </span>
-			<p>rating: <%= @movie.rating %></p>
-			<h5>Overview: </h5>
-			<span><%= @movie.overview %></span>
-			<div>
-			    <table class="table table-hover">
-			      <thead>
-			        <tr>
-			          <th></th>
-			          <th>Name</th>
-			          <th>Job</th>
-			        </tr>
-			      </thead>
-
-			      <tbody>
-			        <% @crews.each do |crew| %>
-			          <tr>
-			          	<% if crew.person.profile.blank? %>
-			          	  <td><%=  image_tag("chiwawa.jpeg", size:"50") %></td>
-			          	<% else %>
-			              <td><%= image_tag(crew.person.profile, size: "50") %></td>
-			            <% end %>
-			            <td><%= link_to crew.person.name, crew.person  %></td>
-			            <td><%= crew.job %></td>
-			          </tr>
-			        <% end %>
-			      </tbody>
-			    </table>
-			    <table class="table table-hover">
-			      <thead>
-			        <tr>
-			          <th></th>
-			          <th>Name</th>
-			          <th>Character</th>
-			        </tr>
-			      </thead>
-
-			      <tbody>
-			        <% @casts.each do |cast| %>
-			          <tr>
-			          	<% if cast.person.profile.blank? %>
-			          	  <td><%=  image_tag("chiwawa.jpeg", size:"50") %></td>
-			          	<% else %>
-			              <td><%= image_tag(cast.person.profile, size: "50") %></td>
-			            <% end %>
-			            <td><%= link_to cast.person.name, cast.person  %></td>
-			            <td><%= cast.character %></td>
-			          </tr>
-			        <% end %>
-			      </tbody>
-			    </table>			
-			</div>
+			<%= render 'movie_cast', casts: @casts %>
 		</div>
 	</div>
+</div>
 

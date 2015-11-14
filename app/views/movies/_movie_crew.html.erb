@@ -1,0 +1,30 @@
+<% if crews.any? %>
+	<div class="panel panel-default" style="margin-top:15px;">
+      <div class="panel-heading center">Crew</div>
+        <div class="panel-body">
+		    <table class="table table-hover">
+		      <thead>
+		        <tr>
+		          <th></th>
+		          <th>Name</th>
+		          <th>Job</th>
+		        </tr>
+		      </thead>
+
+		      <tbody>
+		        <% crews.each do |crew| %>
+		          <tr>
+		          	<% if crew.person.profile.blank? %>
+		          	  <td><%=  image_tag("chiwawa.jpeg", size:"50") %></td>
+		          	<% else %>
+		              <td><%= image_tag(crew.person.profile, size: "50") %></td>
+		            <% end %>
+		            <td><%= link_to crew.person.name, crew.person  %></td>
+		            <td><%= crew.job %></td>
+		          </tr>
+		        <% end %>
+		      </tbody>
+		    </table>
+        </div>
+      </div>
+  <% end %>

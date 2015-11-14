@@ -1,0 +1,31 @@
+<% if casts.any? %>
+<div class="panel panel-default" style="margin-top:15px;">
+  <div class="panel-heading center">Cast</div>
+    <div class="panel-body">
+	    <table class="table table-hover">
+	      <thead>
+	        <tr>
+	          <th></th>
+	          <th>Name</th>
+	          <th>Character</th>
+	        </tr>
+	      </thead>
+
+	      <tbody>
+	        <% casts.each do |cast| %>
+	          <tr>
+	          	<% if cast.person.profile.blank? %>
+	          	  <td><%=  image_tag("chiwawa.jpeg", size:"50") %></td>
+	          	<% else %>
+	              <td><%= image_tag(cast.person.profile, size: "50") %></td>
+	            <% end %>
+	            <td><%= link_to cast.person.name, cast.person  %></td>
+	            <td><%= cast.character %></td>
+	          </tr>
+	        <% end %>
+	      </tbody>
+	    </table>
+    </div>
+  </div>
+</div>
+<% end %>			

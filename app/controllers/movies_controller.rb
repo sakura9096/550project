@@ -17,6 +17,15 @@ class MoviesController < ApplicationController
     @casts = @movie.cast_relations.includes(:person).to_a
     @casts.reject! {|cast| cast.character.size == 0}
     @casts.sort_by! {|cast| cast.order}
+    num = @movie.genres.size
+    rnd = Random.new
+    offset = rnd.rand(num)
+    @genre = @movie.genres[offset]
+    @related_movies = @genre.movies.take 6
+    @related_movies = @related_movies- [@movie]
+    if @related_movies.size > 5
+      @related_movies = @related_movies.take 5
+    end
     #@actors = @movie.casts
   end
 
