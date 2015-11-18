@@ -5,6 +5,10 @@ class GenresController < ApplicationController
   # GET /genres.json
   def index
     @genres = Genre.all
+    @movies = []
+    @genres.each do |g|
+      @movies << g.movies.first
+    end
   end
 
   # GET /genres/1

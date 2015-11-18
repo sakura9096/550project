@@ -1,25 +1,14 @@
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <h1><%= @genre.name %>'s Movies</h1>
+<h1 class="center">Movies in <%= @genre.name %></h1>
 
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Rating</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @movies.each do |movie| %>
-          <tr>
-            <td><%= link_to movie.title, movie  %></td>
-            <td><%= movie.rating %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <%= will_paginate @movies %>
-  </div>
+<div id="g-movies" class="transitions-enabled">
+  <% @movies.each_with_index do |m, i| %>
+    <div class="box panel panel-default">
+      <%= image_tag(m.poster) %>
+      <div class="panel-footer">
+        <h3 class="center"><%= link_to m.title, m %></h3>
+      </div>
+    </div>
+  <% end %>
 </div>
+
+<%= will_paginate @movies %>
