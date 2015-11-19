@@ -1,0 +1,7 @@
+<div id="like_form">
+  <% if current_user.liked?(movie) %>
+    <%= render 'unlike', movie: movie %>
+  <% else %>
+    <%= render 'like', movie: movie %>
+  <% end %>
+</div>

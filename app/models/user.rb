@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   										dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :movie_relations, class_name: "Like", foreign_key: "user_id"
+  has_many :movies, through: :movie_relations, source: :movie
 
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)
@@ -36,6 +38,22 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name   # assuming the user model has a name
     end
+  end
+
+  def like(movie)
+    movie_relations.create(movie_id: movie.id)
+  end
+
+  def unlike(movie)
+    movie_relations.find_by(movie_id: movie.id).destroy
+  end
+
+  def liked?(movie)
+    movies.include?(movie)
+  end
+
+  def feed
+    Like.where("user_id IN (?)", following_ids).includes(:movie)
   end
 
 end

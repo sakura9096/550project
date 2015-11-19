@@ -1,5 +1,9 @@
 class PagesController < ApplicationController
 	def home
-	  @hello = "new app!"
+	  if current_user
+	  	@likes = current_user.feed
+	  else
+	  	@likes = []
+	  end
 	end
 end

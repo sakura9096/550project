@@ -14,11 +14,16 @@ a {
   color: #c0392b;
 }
 
+.btn {
+  width:100%;
+}
+
+
 body { 
   padding-top: 70px; 
-  background: url(http://cdn02.wallpapersonweb.com/media/i1440x900/1/11/105413-safari-browser-desktop-wallpaper-1440x900.jpg);
-  background-size: 100% 20%;
-  background-repeat: no-repeat;
+  // background: url(http://cdn02.wallpapersonweb.com/media/i1440x900/1/11/105413-safari-browser-desktop-wallpaper-1440x900.jpg);
+  // background-size: 100% 20%;
+  // background-repeat: no-repeat;
 
 
 }
@@ -198,3 +203,22 @@ aside {
 .box img {
   width: 100%;
 }
+
+.timestamp {
+  display: inline;
+  color: $gray-light;
+}
+
+.inline {
+  display: inline;
+}
+
+.likes {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid #C0C0C0;
+  }
+} 

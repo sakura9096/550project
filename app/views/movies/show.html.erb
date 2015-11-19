@@ -20,6 +20,9 @@
 	<% end %>
 	<div class="col-md-2 col-md-offset-2" >
 		<%= image_tag(@movie.poster, size: "200") %>
+		<br>
+		<br>
+		<%= render 'like_form', movie: @movie %>
 	</div>
 	<div class="col-md-5 middle">
 		<p class="title"><%= @movie.title %></p> 

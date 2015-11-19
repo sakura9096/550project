@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :following, :followers]
   def show
   	@user = User.find(params[:id])
+    @likes = @user.feed
   end
 
   def index

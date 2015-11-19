@@ -1,0 +1,4 @@
+<%= form_for(current_user.movie_relations.find_by(movie_id: movie.id),
+             html: { method: :delete }) do |f| %>
+  <%= f.submit "Undo Like | #{movie.users.count}", class: "btn" %>
+<% end %>

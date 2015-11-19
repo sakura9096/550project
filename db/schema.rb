@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109032531) do
+ActiveRecord::Schema.define(version: 20151118233405) do
 
   create_table "casts", force: :cascade do |t|
     t.integer  "movie_id",   limit: 4
@@ -56,6 +56,17 @@ ActiveRecord::Schema.define(version: 20151109032531) do
   end
 
   add_index "genres", ["name"], name: "index_genres_on_name", unique: true, using: :btree
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "movie_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "likes", ["movie_id"], name: "index_likes_on_movie_id", using: :btree
+  add_index "likes", ["user_id", "movie_id"], name: "index_likes_on_user_id_and_movie_id", unique: true, using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "movie_genres", force: :cascade do |t|
     t.integer  "movie_id",   limit: 4
