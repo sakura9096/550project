@@ -13,8 +13,25 @@ a {
   color: #c0392b;
 }
 
+.btn-primary {
+  border-color: #c0392b;
+  background-color: #c0392b;
+}
 
+.btn-primary:hover {
+  border-color: #c0392b;
+  background-color: #c0392b;
+}
 
+.btn-primary:focus {
+  border-color: #c0392b;
+  background-color: #c0392b;
+}
+
+.btn-primary:active {
+  border-color: #c0392b;
+  background-color: #c0392b;
+}
 
 body { 
   padding-top: 70px; 
