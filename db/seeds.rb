@@ -14,17 +14,17 @@ class Array
 end
 
 
-res = []
-file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
-	data = JSON.parse(line)
-	res.push(data)
-end
+# res = []
+# file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
+# 	data = JSON.parse(line)
+# 	res.push(data)
+# end
 
-genre = Set.new
+# genre = Set.new
 
-res.each! do |data|
-	genre = genre.merge(data["genres"])
-end
+# res.each! do |data|
+# 	genre = genre.merge(data["genres"])
+# end
 
 # res = []
 # file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
@@ -42,9 +42,9 @@ end
 # end
 # Movie.import movies
 
-genre.each do |g|
-	Genre.create!(name: g)
-end	
+# genre.each do |g|
+# 	Genre.create!(name: g)
+# end	
 
 # res = []
 # file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
@@ -63,22 +63,22 @@ end
 
 
 
-# res = []
-# file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
-# 	data = JSON.parse(line)
-# 	res.push(data)
-# end
+res = []
+file = File.readlines("#{Rails.root}/public/TMDBPersonInfo.json").each do |line|
+	data = JSON.parse(line)
+	res.push(data)
+end
 
-# persons = []
-# res.each do |data|
-# 	persons << Person.new(profile: data["profile"],
-# 				  name: data["name"],
-# 				  biography: data["biography"],
-# 				  day_of_birth: data["dayofbirth"],
-# 				  personId: data["personId"]
-# 				  )
-# end
-# Person.import persons
+persons = []
+res.each do |data|
+	persons << Person.new(profile: data["profile"],
+				  name: data["name"],
+				  biography: data["biography"],
+				  day_of_birth: data["dayofbirth"],
+				  personId: data["personId"]
+				  )
+end
+Person.import persons
 # crews = []
 # res.each do |data|
 # 	crew = data["crew"]
