@@ -46,31 +46,31 @@ end
 # 	Genre.create!(name: g)
 # end	
 
+# res = []
+# file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
+# 	data = JSON.parse(line)
+# 	res.push(data)
+# end
+
+# mg = []
+# res.each! do |data|
+# 	genres = data["genres"]
+# 	genres.each do |gr_name|
+# 		gr = Genre.find_by(name: gr_name)
+# 		mv = Movie.find_by(tmdb_id: data["id"])
+# 		mg << MovieGenre.new(movie_id: mv.id, genre_id: gr.id)
+# 	end
+# end
+
+# MovieGenre.import mg
+
+
+
 res = []
 file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
 	data = JSON.parse(line)
 	res.push(data)
 end
-
-mg = []
-res.each! do |data|
-	genres = data["genres"]
-	genres.each do |gr_name|
-		gr = Genre.find_by(name: gr_name)
-		mv = Movie.find_by(tmdb_id: data["id"])
-		mg << MovieGenre.new(movie_id: mv.id, genre_id: gr.id)
-	end
-end
-
-MovieGenre.import mg
-
-
-
-# res = []
-# file = File.readlines("#{Rails.root}/public/TMDBPersonInfo.json").each do |line|
-# 	data = JSON.parse(line)
-# 	res.push(data)
-# end
 
 # persons = []
 # res.each do |data|
@@ -82,20 +82,21 @@ MovieGenre.import mg
 # 				  )
 # end
 # Person.import persons
-# crews = []
-# res.each do |data|
-# 	crew = data["crew"]
-# 	tmdb_id = data["id"]
-# 	if crew.size > 0
-# 		crew.each do |person|
-# 			personId = person["personId"]
-# 			department = person["department"]
-# 			job = person["job"]
-# 			crews << Crew.new(personid: personId, movieid: tmdb_id, job: job, department: department)
-# 		end
-# 	end
-# end
-# Crew.import crews
+
+crews = []
+res.each do |data|
+	crew = data["crew"]
+	tmdb_id = data["id"]
+	if crew.size > 0
+		crew.each do |person|
+			personId = person["personId"]
+			department = person["department"]
+			job = person["job"]
+			crews << Crew.new(person_id: personId, movie_id: tmdb_id, job: job, department: department)
+		end
+	end
+end
+Crew.import crews
 
 
 # casts = []
