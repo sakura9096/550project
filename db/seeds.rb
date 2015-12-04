@@ -22,7 +22,7 @@ end
 
 genre = Set.new
 
-res.each do |data|
+res.each! do |data|
 	genre = genre.merge(data["genres"])
 end
 
@@ -32,19 +32,19 @@ end
 # 	res.push(data)
 # end
 
-movies = []
-res.each! do |data|
-	movies << Movie.new(title: data["title"], 
-				overview: data["overview"], 
-				poster: data["poster"],
-				tmdb_id: data["id"], 
-				rating: data["userrating"])
-end
-Movie.import movies
+# movies = []
+# res.each! do |data|
+# 	movies << Movie.new(title: data["title"], 
+# 				overview: data["overview"], 
+# 				poster: data["poster"],
+# 				tmdb_id: data["id"], 
+# 				rating: data["userrating"])
+# end
+# Movie.import movies
 
-# genre.each do |g|
-# 	Genre.create!(name: g)
-# end	
+genre.each do |g|
+	Genre.create!(name: g)
+end	
 
 # res = []
 # file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
