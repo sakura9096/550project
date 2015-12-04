@@ -83,33 +83,33 @@ end
 # end
 # Person.import persons
 
-crews = []
-res.each do |data|
-	crew = data["crew"]
-	tmdb_id = data["id"]
-	if crew.size > 0
-		crew.each do |person|
-			personId = person["personId"]
-			department = person["department"]
-			job = person["job"]
-			crews << Crew.new(person_id: personId, movie_id: tmdb_id, job: job, department: department)
-		end
-	end
-end
-Crew.import crews
-
-
-# casts = []
+# crews = []
 # res.each do |data|
-# 	cast = data["cast"]
+# 	crew = data["crew"]
 # 	tmdb_id = data["id"]
-# 	if cast.length > 0
-# 		cast.each do |person|
+# 	if crew.size > 0
+# 		crew.each do |person|
 # 			personId = person["personId"]
-# 			character = person["character"]
-# 			order = person["order"]
-# 			casts << Cast.new(personid: personId, movieid: tmdb_id, order: order, character:character)
+# 			department = person["department"]
+# 			job = person["job"]
+# 			crews << Crew.new(person_id: personId, movie_id: tmdb_id, job: job, department: department)
 # 		end
 # 	end
 # end
-# Cast.import casts
+# Crew.import crews
+
+
+casts = []
+res.each do |data|
+	cast = data["cast"]
+	tmdb_id = data["id"]
+	if cast.length > 0
+		cast.each do |person|
+			personId = person["personId"]
+			character = person["character"]
+			order = person["order"]
+			casts << Cast.new(person_id: personId, movie_id: tmdb_id, order: order, character:character)
+		end
+	end
+end
+Cast.import casts
