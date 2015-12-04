@@ -46,7 +46,9 @@ gem 'activerecord-import', '~> 0.4.0'
 
 gem 'masonry-rails', '~> 0.2.0'
 
-
+group :production do 
+	gem 'pg'
+end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
