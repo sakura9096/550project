@@ -63,11 +63,11 @@ Movie.import movies
 
 
 
-res = []
-file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
-	data = JSON.parse(line)
-	res.push(data)
-end
+# res = []
+# file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
+# 	data = JSON.parse(line)
+# 	res.push(data)
+# end
 
 # persons = []
 # res.each do |data|
@@ -95,17 +95,17 @@ end
 # Crew.import crews
 
 
-casts = []
-res.each do |data|
-	cast = data["cast"]
-	tmdb_id = data["id"]
-	if cast.length > 0
-		cast.each do |person|
-			personId = person["personId"]
-			character = person["character"]
-			order = person["order"]
-			casts << Cast.new(personid: personId, movieid: tmdb_id, order: order, character:character)
-		end
-	end
-end
-Cast.import casts
+# casts = []
+# res.each do |data|
+# 	cast = data["cast"]
+# 	tmdb_id = data["id"]
+# 	if cast.length > 0
+# 		cast.each do |person|
+# 			personId = person["personId"]
+# 			character = person["character"]
+# 			order = person["order"]
+# 			casts << Cast.new(personid: personId, movieid: tmdb_id, order: order, character:character)
+# 		end
+# 	end
+# end
+# Cast.import casts
