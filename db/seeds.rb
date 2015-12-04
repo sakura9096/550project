@@ -13,7 +13,6 @@ class Array
 	end
 end
 
-require 'Set'
 
 res = []
 file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
