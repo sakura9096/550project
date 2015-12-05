@@ -100,7 +100,6 @@ end
 
 
 casts = []
-i=0
 res.each do |data|
 	cast = data["cast"]
 	tmdb_id = data["id"]
@@ -111,10 +110,6 @@ res.each do |data|
 			order = person["order"]
 			casts << Cast.new(person_id: personId, movie_id: tmdb_id, order: order, character:character)
 		end
-	end
-	i += 1
-	if i > 10
-		break
 	end
 end
 Cast.import casts
