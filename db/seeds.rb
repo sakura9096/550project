@@ -100,7 +100,8 @@ end
 
 
 casts = []
-res.each do |data|
+for i in 0..100000
+	data = res[i]
 	cast = data["cast"]
 	tmdb_id = data["id"]
 	if cast.length > 0
