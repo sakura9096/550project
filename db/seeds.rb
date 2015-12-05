@@ -100,7 +100,7 @@ end
 
 
 casts = []
-for i in 0..100000
+for i in 0...res.size
 	data = res[i]
 	cast = data["cast"]
 	tmdb_id = data["id"]
