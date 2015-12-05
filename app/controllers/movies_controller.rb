@@ -1,6 +1,8 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:show]
+  before_action :set_mongo, only: [:show]
+
 
   # GET /movies
   # GET /movies.json
@@ -12,6 +14,8 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     tmdb_id = @movie.tmdb_id
+    mongo_movie = @cli[:TMDBmovieinfo].find(:id => tmdb_id).first
+    @posters = mongo_movie["posters"]
     @crews = @movie.crew_relations.includes(:person).to_a
     #@workers = @movie.crews
     @crews.sort_by! {|crew| crew.job} 
@@ -92,5 +96,9 @@ class MoviesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
       params.require(:movie).permit(:title, :poster, :rating, :overview)
+    end
+
+    def set_mongo
+      @cli = Mongo::Client.new("mongodb://550project:550project@ds057204.mongolab.com:57204/project550")
     end
 end

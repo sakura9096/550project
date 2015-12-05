@@ -46,6 +46,8 @@ gem 'activerecord-import', '~> 0.4.0'
 
 gem 'masonry-rails', '~> 0.2.0'
 
+gem 'mongo', '~> 2.1'
+
 group :production do 
 	gem 'pg'
 end
