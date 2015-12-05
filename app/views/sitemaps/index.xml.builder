@@ -18,11 +18,4 @@ xml.tag! 'urlset', 'xmlns' => 'http://www.sitemaps.org/schemas/sitemap/0.9' do
       xml.priority(0.9)
     }
   end
-  @people.each do |person|
-    xml.url {
-      xml.loc "#{person_url(person)}"
-      xml.changefreq("weekly")
-      xml.priority(0.9)
-    }
-  end
 end
