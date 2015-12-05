@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "sitemap.xml" => "sitemaps#index", :format => "xml", :as => :sitemap
+
   get 'likes/create'
 
   get 'likes/destroy'
