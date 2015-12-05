@@ -48,6 +48,8 @@ gem 'masonry-rails', '~> 0.2.0'
 
 gem 'mongo', '~> 2.1'
 
+gem 'youtube_addy'
+
 group :production do 
 	gem 'pg'
 end
