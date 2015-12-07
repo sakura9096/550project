@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   has_many :movie_relations, class_name: "Like", foreign_key: "user_id"
   has_many :movies, through: :movie_relations, source: :movie
 
+  has_many :notifications, dependent: :destroy
+
+
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)
   end
@@ -54,6 +57,12 @@ class User < ActiveRecord::Base
 
   def feed
     Like.where("user_id IN (?)", following_ids).includes(:movie)
+  end
+
+  def temp_access_token
+    Rails.cache.fetch("user-#{self.id}-temp_access_token-#{Time.now.strftime("%Y%m%d")}") do
+      SecureRandom.hex
+    end
   end
 
 end

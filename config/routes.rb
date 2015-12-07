@@ -23,6 +23,11 @@ Rails.application.routes.draw do
   resources :followships, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
   
+  resources :notifications, only: [:index, :destroy] do
+    collection do
+      post :clear
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

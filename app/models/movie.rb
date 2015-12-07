@@ -14,4 +14,6 @@ class Movie < ActiveRecord::Base
 
 	has_many :user_relations, class_name: "Like", foreign_key: "movie_id"
 	has_many :users, through: :user_relations, source: :movie
+
+	has_many :notifications, dependent: :destroy
 end

@@ -50,6 +50,10 @@ gem 'mongo', '~> 2.1'
 
 gem 'youtube_addy'
 
+gem 'message_bus'
+
+gem 'backbone-on-rails'
+
 group :production do 
 	gem 'pg'
 end

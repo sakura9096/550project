@@ -14,10 +14,10 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     tmdb_id = @movie.tmdb_id
-    mongo_movie = @cli[:TMDBmovieinfo].find(:id => tmdb_id).first
-    @posters = mongo_movie["posters"].uniq
-    videos = mongo_movie["youtube_trailers"]
-    @urls = videos.map {|v| v["urL"]}
+    # mongo_movie = @cli[:TMDBmovieinfo].find(:id => tmdb_id).first
+    # @posters = mongo_movie["posters"].uniq
+    # videos = mongo_movie["youtube_trailers"]
+    # @urls = videos.map {|v| v["urL"]}
     @crews = @movie.crew_relations.includes(:person).to_a
     #@workers = @movie.crews
     @crews.sort_by! {|crew| crew.job} 

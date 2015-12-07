@@ -242,3 +242,11 @@ aside {
     border-bottom: 1px solid #C0C0C0;
   }
 } 
+
+.notification-count {
+  .count { margin-left: 4px;}
+  .new {
+    color: #c0392b !important;
+    .count { display: inline; }
+  }
+}

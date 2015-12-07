@@ -1,0 +1,14 @@
+<li class="media">
+  <div class="media-left">
+    <%= link_to gravatar_for(User.find(notification.followed_id)), User.find(notification.followed_id)  %>  
+  </div>
+  <div class="media-body">
+    Your friend <%= User.find(notification.followed_id).name %> liked  <%= link_to notification.movie.title, notification.movie %>
+    <% if !notification.read? %>
+      <span class="new label label-warning">new</span>
+    <% end %>
+    <span class="timestamp pull-right">
+    	<%= time_ago_in_words(notification.created_at) %>
+    </span>
+  </div>
+</li>
