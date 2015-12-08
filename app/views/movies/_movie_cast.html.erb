@@ -15,7 +15,7 @@
 	        <% casts.each do |cast| %>
 	          <tr>
 	          	<% if cast.person.profile.blank? %>
-	          	  <td><%=  image_tag("chiwawa.jpeg", size:"50") %></td>
+	          	  <td><%=  image_tag("chiwawa.jpg", size:"50") %></td>
 	          	<% else %>
 	              <td><%= image_tag(cast.person.profile, size: "50") %></td>
 	            <% end %>
