@@ -26,6 +26,7 @@
             badge_class = ""
             badge_class = "new" if current_user.notifications.unread.count > 0
           %> 
+          <li><%= link_to "Quiz", surveys_path  %></li>
           <li class="notification-count">
             <a href="<%= notifications_path %>" class=<%= badge_class %> > Notifications <span class="count"><%= current_user.notifications.unread.count %></span></a>
           </li> 

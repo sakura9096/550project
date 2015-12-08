@@ -1,0 +1,124 @@
+// Place all the styles related to the surveys controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+a:hover,
+a:focus {
+  text-decoration: none !important;
+}
+
+.survey-form {
+  padding-bottom: 40px;
+}
+
+.answers-number {
+  padding-left: 20px;
+  padding-bottom: 10px;
+  color: grey;
+
+  .number {
+    font-size: 15px;
+  }
+}
+
+.chosen {
+  font-weight: bold;
+}
+
+.questions {
+  padding-left: 20px;
+
+  li {
+    font-size: 16px;
+    padding-bottom: 20px;
+
+    .question {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 16px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+
+    * {
+      font-size: 14px;      
+      padding-bottom: 0;
+    }
+  }
+}
+
+.options {
+  padding-left: 0;
+}
+
+.survey-title {
+  padding-bottom: 15px;
+}
+
+.survey-description {
+  color: grey;
+  font-size: 15px;
+}
+
+.navbar-brand {
+  padding: 10px;
+}
+
+.label-survey {
+  margin-right: 5px;
+  
+  &-quiz {
+    background-color: #5B618A;
+  }
+
+  &-poll {
+    background-color: #7CAE7A;
+  }
+
+  &-score {
+    background-color: #B26E63;
+  }
+
+  &-all {
+    background-color: grey;
+  }
+}
+
+.label-with-badges {
+  display: inline-block;
+  padding: 5px 10px;
+}
+
+.label-badge {
+  padding: 2px 5px;
+  font-size: 10px;
+  background-color: white;
+
+  &-quiz {
+    color: #5B618A;
+  }
+
+  &-poll {
+    color: #7CAE7A;
+  }
+
+  &-score {
+    color: #B26E63;
+  }
+
+  &-all {
+    color: grey;
+  }
+}
+
+.survey-table {
+  margin-top: 15px;
+
+  td {
+    vertical-align: middle !important;
+  }
+}
+
+.survey-buttons {
+  min-width: 150px;
+}

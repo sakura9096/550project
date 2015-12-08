@@ -1,14 +1,16 @@
 <h1 class="center">Movies in <%= @genre.name %></h1>
-
-<div id="g-movies" class="transitions-enabled">
-  <% @movies.each_with_index do |m, i| %>
-    <div class="box panel panel-default">
-      <%= image_tag(m.poster) %>
-      <div class="panel-footer">
-        <h3 class="center"><%= link_to m.title, m %></h3>
-      </div>
-    </div>
-  <% end %>
+<div class="row">
+  <div class="col-md-11 col-md-offset-1">
+	<div id="g-movies" class="transitions-enabled">
+	  <% @movies.each_with_index do |m, i| %>
+	    <div class="box panel panel-default">
+	      <%= image_tag(m.poster) %>
+	      <div class="panel-footer">
+	        <h3 class="center"><%= link_to m.title, m %></h3>
+	      </div>
+	    </div>
+	  <% end %>
+	</div>
+  </div>
 </div>
-
 <%= will_paginate @movies %>

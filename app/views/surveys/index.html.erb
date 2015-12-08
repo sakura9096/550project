@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="questionnaires_<%= action_name %>">
+    <h1>
+      Quizzes
+    </h1>
+    <hr>
+    <% if @surveys.empty? %>
+      <p> There are no surveys </p>
+    <% else %>
+      <table class='table table-nonfluid survey-table'>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Questions</th>
+            <th>Participants</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: 'survey', collection: @surveys %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

@@ -66,11 +66,11 @@ end
 
 
 
-res = []
-file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
-	data = JSON.parse(line)
-	res.push(data)
-end
+# res = []
+# file = File.readlines("#{Rails.root}/public/TMDBMovieInfo.json").each do |line|
+# 	data = JSON.parse(line)
+# 	res.push(data)
+# end
 
 # persons = []
 # res.each do |data|
@@ -99,18 +99,54 @@ end
 # Crew.import crews
 
 
-casts = []
-for i in 20000...res.size
-	data = res[i]
-	cast = data["cast"]
-	tmdb_id = data["id"]
-	if cast.length > 0
-		cast.each do |person|
-			personId = person["personId"]
-			character = person["character"]
-			order = person["order"]
-			casts << Cast.new(person_id: personId, movie_id: tmdb_id, order: order, character:character)
-		end
-	end
+# casts = []
+# for i in 20000...res.size
+# 	data = res[i]
+# 	cast = data["cast"]
+# 	tmdb_id = data["id"]
+# 	if cast.length > 0
+# 		cast.each do |person|
+# 			personId = person["personId"]
+# 			character = person["character"]
+# 			order = person["order"]
+# 			casts << Cast.new(person_id: personId, movie_id: tmdb_id, order: order, character:character)
+# 		end
+# 	end
+# end
+# Cast.import casts
+
+my_survey = Survey::Survey.new do |survey|
+  survey.name = "Movie Star Quiz" 
+  survey.description = "The quiz is about movie stars"
+  survey.attempts_number = 3
+  survey.active = true
 end
-Cast.import casts
+
+# Let's add some questions and options
+question_1 = Survey::Question.new do |question|
+  question.text = 'Who appeared in Moneyball?'
+  # by default when we don't specify the weight of a option
+  # its value is equal to one
+  question.options = [
+    Survey::Option.new(:text => 'Christian Bale',  :correct => false),
+    Survey::Option.new(:text => 'Brad Pitt', :correct => true),
+    Survey::Option.new(:text => 'Xiandong Wang', :correct => false)
+  ]
+end
+
+question_2 = Survey::Question.new do |question|
+  question.text = 'Who won the 87th Academy Award for Best Actress?'
+  question.options = [
+    Survey::Option.new(:text => 'Emma Stone', :weight => 100),
+    Survey::Option.new(:text => 'Meryl Streep',     :weight => 0),
+    Survey::Option.new(:text => 'Julianne Moore', :weight => 50)
+  ]
+end
+
+my_survey.questions = [question_1, question_2]
+my_survey.save!
+
+
+
+
+

@@ -54,6 +54,11 @@ gem 'message_bus'
 
 gem 'backbone-on-rails'
 
+gem "survey", "~> 0.1"
+
+gem 'twitter-bootstrap-rails'
+	
+
 group :production do 
 	gem 'pg'
 end

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :people, only: [:create, :destroy, :show, :edit]
   root :to => 'pages#home'
 
+  resources :surveys
+  resources :attempts
+
   resources :genres
 
   resources :movies
