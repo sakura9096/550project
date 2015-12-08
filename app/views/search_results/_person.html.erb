@@ -1,0 +1,13 @@
+<li class="media">
+  <div class="media-left">
+  	<% if r.profile.present? %>
+      <%= link_to(image_tag(r.profile, size: "90"), r) %>
+    <% else %>
+      <%= link_to image_tag("chiwawa.jpg", size:"90"), r  %>
+    <% end %>
+  </div>
+  <div class="media-body">
+    <h3 class="media-heading" style="border-bottom:1px solid white; padding-bottom:9px;"><%= r.name %></h3>
+    <p><%= r.biography %></p>
+  </div>
+</li>

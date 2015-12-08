@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<% if @res_m.size > 0 || @res_p.size > 0 || @res_u.size > 0 %>
+			<% if @keywords.present? %>
+				<h2>Showing Results for <span class="highlight"><%= @keywords %></span></h2>
+			<% end %>
+			<ol style="list-style-postion:inside">
+				<% @res_m.each do |r| %>
+					<%= render 'movie', r: r %>
+				<% end %>
+				<% @res_p.each do |r| %>
+					<%= render 'person', r: r %>
+				<% end %>
+				<% @res_u.each do |r| %>
+					<%= render 'user', r: r %>
+				<% end %>
+			</ol>
+		<% else %>
+			<h2>No Results Found</h2>
+		<% end %>
+
+	</div>
+</div>
