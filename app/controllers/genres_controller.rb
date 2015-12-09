@@ -4,7 +4,7 @@ class GenresController < ApplicationController
   # GET /genres
   # GET /genres.json
   def index
-    @genres = Genre.all
+    @genres = Genre.all.order("name DESC").paginate(page: params[:page])
     @movies = []
     @genres.each do |g|
       @movies << g.movies.first

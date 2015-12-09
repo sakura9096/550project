@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get 'likes/destroy'
 
   resources :people, only: [:create, :destroy, :show, :edit]
-  root :to => 'pages#home'
+  #root :to => 'pages#home'
+  root 'genres#index'
 
   resources :surveys
   resources :attempts

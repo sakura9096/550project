@@ -4,7 +4,7 @@
 	<div id="g-movies" class="transitions-enabled">
 	  <% @movies.each_with_index do |m, i| %>
 	    <div class="box panel panel-default">
-	      <%= image_tag(m.poster) %>
+	      <%= link_to image_tag(m.poster), m %>
 	      <div class="panel-footer">
 	        <h3 class="center"><%= link_to m.title, m %></h3>
 	      </div>
@@ -13,4 +13,7 @@
 	</div>
   </div>
 </div>
-<%= will_paginate @movies %>
+
+<div class="center">
+	<%= will_paginate @movies, renderer: BootstrapPagination::Rails %>
+</div>

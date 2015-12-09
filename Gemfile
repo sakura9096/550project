@@ -40,6 +40,8 @@ gem 'puma'
 gem 'mysql2', '~> 0.3.18'
 
 gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate-bootstrap', '~>1.0.1'
+
 gem 'omniauth-facebook'
 
 gem 'activerecord-import', '~> 0.4.0'
