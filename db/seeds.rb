@@ -115,36 +115,14 @@ end
 # end
 # Cast.import casts
 
-my_survey = Survey::Survey.new do |survey|
-  survey.name = "Movie Star Quiz" 
-  survey.description = "The quiz is about movie stars"
-  survey.attempts_number = 3
-  survey.active = true
+99.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@seas.upenn.edu"
+  password = "iverson7"
+  User.create!(name:  name,
+               email: email,
+               password: password)
 end
-
-# Let's add some questions and options
-question_1 = Survey::Question.new do |question|
-  question.text = 'Who appeared in Moneyball?'
-  # by default when we don't specify the weight of a option
-  # its value is equal to one
-  question.options = [
-    Survey::Option.new(:text => 'Christian Bale',  :correct => false),
-    Survey::Option.new(:text => 'Brad Pitt', :correct => true),
-    Survey::Option.new(:text => 'Xiandong Wang', :correct => false)
-  ]
-end
-
-question_2 = Survey::Question.new do |question|
-  question.text = 'Who won the 87th Academy Award for Best Actress?'
-  question.options = [
-    Survey::Option.new(:text => 'Emma Stone', :weight => 100),
-    Survey::Option.new(:text => 'Meryl Streep',     :weight => 0),
-    Survey::Option.new(:text => 'Julianne Moore', :weight => 50)
-  ]
-end
-
-my_survey.questions = [question_1, question_2]
-my_survey.save!
 
 
 
