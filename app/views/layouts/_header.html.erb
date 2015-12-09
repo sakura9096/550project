@@ -14,26 +14,54 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <%= form_for :search_results, url: :search_results, method: :get, html:{class: "navbar-form navbar-left"} do |f| %>
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             <%= text_field_tag :keywords, nil,
                        placeholder: "Search", class: "form-control" %> 
             <%= submit_tag "Submit", class: "btn btn-primary" %>
         <% end %>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Movies", genres_path  %></a></li>
-        <li><%= link_to "Users", users_path  %></a></li>
+        <li>
+          <%= link_to genres_path do %>
+            <span class="glyphicon glyphicon-film"></span> Movies
+          <% end %>
+        </li>
+        <li>
+          <%= link_to users_path  do %>
+            <span class="glyphicon glyphicon-user"></span> User
+          <% end %>
+        </li>
         <% if user_signed_in? %>
           <%
             badge_class = ""
             badge_class = "new" if current_user.notifications.unread.count > 0
           %> 
-          <li><%= link_to "Quiz", surveys_path  %></li>
+          <li>
+            <%= link_to surveys_path do %>
+              <span class="glyphicon glyphicon-pencil"></span> Quiz
+            <% end %>
+          </li>
           <li class="notification-count">
-            <a href="<%= notifications_path %>" class=<%= badge_class %> > Notifications <span class="count"><%= current_user.notifications.unread.count %></span></a>
+            <a href="<%= notifications_path %>" class=<%= badge_class %> > 
+              <span class="glyphicon glyphicon-bell"></span>Notifications 
+              <span class="count"><%= current_user.notifications.unread.count %></span>
+            </a>
           </li> 
-          <li><%= link_to "Account Settings", edit_user_registration_path %></li>
-          <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+          <li>
+            <%= link_to edit_user_registration_path do %>
+              <span class="glyphicon glyphicon-cog"></span> Account Settings
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+            <% end %>
+          </li>
         <% else %>
-          <li><%= link_to "Sign in", new_user_session_path %></li>
+          <li>
+            <%= link_to new_user_session_path do %>
+            <span class="glyphicon glyphicon-log-in"></span> Sign in
+            <% end %>
+          </li>
         <% end %>
 
       </ul>
