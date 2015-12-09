@@ -254,6 +254,3 @@ DEPENDENCIES
   will_paginate (~> 3.0.6)
   will_paginate-bootstrap (~> 1.0.1)
   youtube_addy
-
-BUNDLED WITH
-   1.10.6

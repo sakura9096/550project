@@ -8,10 +8,12 @@ $font-family-sans-serif:           'Lato', 'Helvetica Neue', Helvetica, Arial, s
 $navbar-height:                    45px;
 $navbar-default-bg:                white;
 $navbar-default-brand-color:       #c0392b;
-$brand-primary:                    #c0392b;
+$brand-primary:                    black;
 $jumbotron-bg:                     white;
 
-
+.navbar-default .navbar-brand {
+    color: #c0392b;
+}
 a {
   color: #c0392b;
 }

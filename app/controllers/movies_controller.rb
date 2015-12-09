@@ -19,6 +19,7 @@ class MoviesController < ApplicationController
     # videos = mongo_movie["youtube_trailers"]
     # @urls = videos.map {|v| v["urL"]}
     @crews = @movie.crew_relations.includes(:person).to_a
+    @crews = @crews.take 5
     #@workers = @movie.crews
     @crews.sort_by! {|crew| crew.job} 
     @casts = @movie.cast_relations.includes(:person).to_a
