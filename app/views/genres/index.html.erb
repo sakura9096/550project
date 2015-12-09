@@ -1,3 +1,5 @@
+<%= render 'pages/home' unless user_signed_in? %>
+
 <h1 class="center">All Genres</h1>
 <div id="genres" class="transitions-enabled">
   <% @movies.each_with_index do |m, i| %>
