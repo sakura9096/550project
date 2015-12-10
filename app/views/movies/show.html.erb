@@ -37,6 +37,15 @@
 		<span><%= @movie.overview %></span>
 		<br>
 		<ul class="list-unstyled list-inline">
+			<% @posters.each do |p| %>
+			  <li><%= image_tag(p, size:"100") %></li>
+		    <% end %>
+		</ul>
+		<ul class="list-unstyled list-inline">
+			<% @urls.each do |u| %>
+			  <li><iframe width="200" height="200" src=<%= "http://www.youtube.com/embed/#{YouTubeAddy.extract_video_id(u)}" %> frameborder="0" allowfullscreen></iframe></li>
+			<% end %>
+		</ul>
 		<div>
 			<%= render 'movie_crew', crews: @crews %>			    
 		</div>

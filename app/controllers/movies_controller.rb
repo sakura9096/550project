@@ -14,10 +14,10 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     tmdb_id = @movie.tmdb_id
-    # mongo_movie = @cli[:TMDBmovieinfo].find(:id => tmdb_id).first
-    # @posters = mongo_movie["posters"].uniq
-    # videos = mongo_movie["youtube_trailers"]
-    # @urls = videos.map {|v| v["urL"]}
+    mongo_movie = @cli[:TMDBMovies].find(:id => tmdb_id).first
+    @posters = mongo_movie["posters"].uniq
+    videos = mongo_movie["youtube_trailers"]
+    @urls = videos.map {|v| v["urL"]}
     @crews = @movie.crew_relations.includes(:person).to_a
     @crews = @crews.take 5
     #@workers = @movie.crews
@@ -102,6 +102,6 @@ class MoviesController < ApplicationController
     end
 
     def set_mongo
-      @cli = Mongo::Client.new("mongodb://550project:550project@ds057204.mongolab.com:57204/project550")
+      @cli = Mongo::Client.new("mongodb://localhost:27017/project550")
     end
 end

@@ -1,13 +1,11 @@
-
 <h1 class="center">All Genres</h1>
 <div id="genres" class="transitions-enabled">
-  <% @movies.each_with_index do |m, i| %>
+  <% movies.each_with_index do |m, i| %>
     <div class="box panel panel-default">
-      <%= link_to image_tag(m.poster), @genres[i] %>
+      <%= link_to image_tag(m.poster), genres[i] %>
       <div class="panel-footer">
-        <h3 class="center"><%= link_to @genres[i].name, @genres[i] %></h3>
+        <h3 class="center"><%= link_to genres[i].name, genres[i] %></h3>
       </div>
     </div>
   <% end %>
 </div>
-
