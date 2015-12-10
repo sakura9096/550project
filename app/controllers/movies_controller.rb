@@ -15,8 +15,8 @@ class MoviesController < ApplicationController
   def show
     tmdb_id = @movie.tmdb_id
     # mongo_movie = @cli[:TMDBMovies].find(:id => tmdb_id).first
-    # @posters = mongo_movie["posters"].uniq.take 8
-    # videos = mongo_movie["youtube_trailers"].take 2
+    # @posters = mongo_movie["posters"].uniq.take 5
+    # videos = mongo_movie["youtube_trailers"]
     # @urls = videos.map {|v| v["urL"]}
     @crews = @movie.crew_relations.includes(:person).to_a
     @crews = @crews.take 5

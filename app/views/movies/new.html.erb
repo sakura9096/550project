@@ -3,9 +3,13 @@
 <%= render 'form' %>
 
 <%= link_to 'Back', movies_path %>
-		<% @posters.each do |p| %>
-			<li><%= image_tag(p, size:"100") %></li>
-		<% end %>
+
+
+
+		<ul class="list-unstyled list-inline">
+			<% @posters.each do |p| %>
+			  <li><%= image_tag(p, size:"100") %></li>
+		    <% end %>
 		</ul>
 		<ul class="list-unstyled list-inline">
 			<% @urls.each do |u| %>
