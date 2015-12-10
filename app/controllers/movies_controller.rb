@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:show]
-  before_action :set_mongo, only: [:show]
+  # before_action :set_mongo, only: [:show]
 
 
   # GET /movies
@@ -14,10 +14,10 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     tmdb_id = @movie.tmdb_id
-    mongo_movie = @cli[:TMDBMovies].find(:id => tmdb_id).first
-    @posters = mongo_movie["posters"].uniq
-    videos = mongo_movie["youtube_trailers"]
-    @urls = videos.map {|v| v["urL"]}
+    # mongo_movie = @cli[:TMDBMovies].find(:id => tmdb_id).first
+    # @posters = mongo_movie["posters"].uniq.take 8
+    # videos = mongo_movie["youtube_trailers"].take 2
+    # @urls = videos.map {|v| v["urL"]}
     @crews = @movie.crew_relations.includes(:person).to_a
     @crews = @crews.take 5
     #@workers = @movie.crews

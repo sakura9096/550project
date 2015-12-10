@@ -1,7 +1,7 @@
 <div class="row">
 	<% if @related_movies.any? %>
 		<div class="col-md-2" style="margin-top:0px; position:fixed;">
-			<h3 class="center" style="margin-top:0px;">Best in This Genre:</h3>
+			<h3 class="center" style="margin-top:0px;">Best in <%= @genre.name %>:</h3>
 		    <table class="table table-hover">
 		      <thead>
 		        <tr>
