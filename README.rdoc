@@ -2,10 +2,10 @@
 
 A movie social netword where user can like, rate and share movies/stars/directors, follow other users and get real-time activity notifications.
 
-# Screenshots
-https://github.com/sakura9096/Movie-Radar/blob/master/app/assets/images/mr1.png
-
+Screenshots
+A page displaying all genres
 https://github.com/sakura9096/Movie-Radar/blob/master/app/assets/images/mr2.png
 
+A movie details page
 https://github.com/sakura9096/Movie-Radar/blob/master/app/assets/images/mr4.png
 
