@@ -1,28 +1,11 @@
-== README
+== Movie Radar
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A movie social netword where user can like, rate and share movies/stars/directors, follow other users and get real-time activity notifications.
 
-Things you may want to cover:
+### Screenshots
+<img src="https://github.com/sakura9096/Movie-Radar/blob/master/app/assets/images/mr1.png" width=400px>
 
-* Ruby version
+<img src="https://github.com/sakura9096/Movie-Radar/blob/master/app/assets/images/mr2.png" width=400px>
 
-* System dependencies
+<img src="https://github.com/sakura9096/Movie-Radar/blob/master/app/assets/images/mr4.png" width=400px>
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
